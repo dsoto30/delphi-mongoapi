@@ -1,7 +1,7 @@
 package com.delphi.mongo_rest_api.controllers;
 
-import com.delphi.mongo_rest_api.Preferences;
-import com.delphi.mongo_rest_api.User;
+import com.delphi.mongo_rest_api.models.Preferences;
+import com.delphi.mongo_rest_api.models.User;
 import com.delphi.mongo_rest_api.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

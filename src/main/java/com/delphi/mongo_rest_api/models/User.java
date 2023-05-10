@@ -1,7 +1,7 @@
-package com.delphi.mongo_rest_api;
+package com.delphi.mongo_rest_api.models;
 
+import com.delphi.mongo_rest_api.models.Preferences;
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
