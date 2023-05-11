@@ -1,5 +1,6 @@
 package com.delphi.mongo_rest_api.controllers;
 
+import com.delphi.mongo_rest_api.models.Order;
 import com.delphi.mongo_rest_api.models.Preferences;
 import com.delphi.mongo_rest_api.models.Recommendation;
 import com.delphi.mongo_rest_api.models.User;
@@ -137,6 +138,10 @@ public class UserController {
         }
     }
 
+    @PutMapping("/update-preferences")
+    public ResponseEntity updatePreferences(@RequestBody Order order){
+        return new ResponseEntity("Updated User # " + order.getUser_id() + " preferences", HttpStatus.OK);
+    }
 
 }
 
