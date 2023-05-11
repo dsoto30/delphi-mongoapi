@@ -35,7 +35,8 @@ public class UserController {
             @RequestParam("sodium") int sodium,
             @RequestParam("carbohydrates") int carbohydrates,
             @RequestParam("sugars") int sugars,
-            @RequestParam("protein") int protein) {
+            @RequestParam("protein") int protein,
+            @RequestParam("filters") ArrayList<String> filters){
 
         Optional<User> exiting_user = userService.existingEmailCheck(email);
 
@@ -45,13 +46,14 @@ public class UserController {
         Preferences user_preferences = new Preferences(calories,
                 total_fat, saturated_fat, sodium, carbohydrates, sugars, protein);
 
+        ArrayList<String> user_filters = filters;
         User user = new User(
                 first_name,
                 last_name,
                 email,
                 password,
                 user_preferences,
-                new ArrayList<>(Arrays.asList("vegan", "pork")));
+                filters);
 
 
         User created_user = userService.createUser(user);
@@ -64,7 +66,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public User loginUser(
             @RequestParam("email") String email,
             @RequestParam("password") String password) {

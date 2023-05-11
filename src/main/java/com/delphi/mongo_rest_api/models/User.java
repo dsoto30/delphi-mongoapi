@@ -37,4 +37,6 @@ public class User {
         this.preferences = preferences;
         this.filters = filters;
     }
+
+
 }
