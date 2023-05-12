@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +46,7 @@ public class UserController {
             @RequestParam("carbohydrates") int carbohydrates,
             @RequestParam("sugars") int sugars,
             @RequestParam("protein") int protein,
-            @RequestParam("filters") List<String> filters){
+            @RequestParam("filters") ArrayList<String> filters){
 
         Optional<User> exiting_user = userService.existingEmailCheck(email);
 

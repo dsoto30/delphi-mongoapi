@@ -7,7 +7,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 @Data // Creates Class Constructor and Getters And Setters for us!
@@ -23,14 +24,14 @@ public class User {
 
     private String password;
     private Preferences preferences;
-    List<String> filters;
+    ArrayList<String> filters;
 
     public User(String first_name,
                 String last_name,
                 String email,
                 String password,
                 Preferences preferences,
-                List<String> filters) {
+                ArrayList<String> filters) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
