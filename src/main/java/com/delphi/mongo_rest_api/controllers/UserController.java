@@ -32,7 +32,7 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-
+    /*
     @PostMapping("/register")
     public ResponseEntity registerUser(
             @RequestParam("first_name") String first_name,
@@ -65,6 +65,24 @@ public class UserController {
                 user_preferences,
                 filters);
 
+
+        User created_user = userService.createUser(user);
+
+        if (created_user.getUser_id() == null) {
+            return new ResponseEntity("Registration failed", HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity("Registration Successful User #" + created_user.getUser_id(), HttpStatus.OK);
+    }*/
+
+    @PostMapping("/register")
+    public ResponseEntity registerUser(@RequestBody User user){
+
+        Optional<User> exiting_user = userService.existingEmailCheck(user.getEmail());
+
+        if (exiting_user.isPresent()){
+            return new ResponseEntity("Email already has an Account!", HttpStatus.BAD_REQUEST);
+        }
 
         User created_user = userService.createUser(user);
 
