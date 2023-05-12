@@ -1,9 +1,6 @@
 package com.delphi.mongo_rest_api.controllers;
 
-import com.delphi.mongo_rest_api.models.Order;
-import com.delphi.mongo_rest_api.models.Preferences;
-import com.delphi.mongo_rest_api.models.Recommendation;
-import com.delphi.mongo_rest_api.models.User;
+import com.delphi.mongo_rest_api.models.*;
 import com.delphi.mongo_rest_api.services.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.AllArgsConstructor;
@@ -92,8 +89,7 @@ public class UserController {
 
         return new ResponseEntity("Registration Successful User #" + created_user.getUser_id(), HttpStatus.OK);
     }
-
-
+    /*
     @PostMapping("/login")
     public User loginUser(
             @RequestParam("email") String email,
@@ -111,6 +107,23 @@ public class UserController {
         }
 
         return user;
+    }*/
+
+    @PostMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestBody LoginInfo login){
+        Optional<User> exiting_user = userService.existingEmailCheck(login.getEmail());
+
+        if (!exiting_user.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        User user = exiting_user.get();
+
+        if (!(user.getPassword().equals(login.getPassword()))){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/test")
