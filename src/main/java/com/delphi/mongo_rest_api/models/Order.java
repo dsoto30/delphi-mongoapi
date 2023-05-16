@@ -10,16 +10,16 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class Order {
 
-    private int orderId,restaurantId;
-    private String userId;
+    private int restaurantId;
+    private String userId, orderId;
     private ArrayList<Integer> ordered_items;
 
 
-    public int getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

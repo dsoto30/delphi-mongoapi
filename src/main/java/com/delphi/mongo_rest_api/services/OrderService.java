@@ -12,7 +12,7 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order findByOrderId(Integer id){
+    public Order findByOrderId(String id){
         return orderRepository.findByOrderId(id);
     }
 
