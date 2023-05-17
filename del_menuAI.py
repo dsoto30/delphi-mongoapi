@@ -154,6 +154,7 @@ if __name__ == "__main__":
     rec.getUserAndRestaurantFromAPI()
     items = rec.recommend(10)
     for item in items:
-        print("item_id: ", item['item_id'], " item_name: ", item['item_name'])
+        result = "item_id: " + str(item['item_id']) + " item_name: " + str(item['item_name'])
+        print(str(result))
 
 
