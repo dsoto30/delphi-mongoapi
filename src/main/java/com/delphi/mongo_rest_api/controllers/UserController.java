@@ -89,49 +89,8 @@ public class UserController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//    @GetMapping("recommend")
-//    public List<Recommendation> getRecommendations(
-//            @RequestParam("user_id") String user_id,
-//            @RequestParam("restaurant_id") String restaurant_id){
-//
-//        return callPythonScript(user_id, restaurant_id);
-//    }
-//
-//    private List<Recommendation> callPythonScript(String param1, String param2) {
-//        try {
-//            // Build command to execute Python script with parameters
-//            String python_path = "C:\\Users\\sotod\\OneDrive\\Documents\\Delphi\\RecommenderSystem\\del_menuAI.py";
-//            List<String> command = Arrays.asList("python", python_path, param1, param2);
-//
-//            // Execute command and capture output
-//            ProcessBuilder processBuilder = new ProcessBuilder(command);
-//            Process process = processBuilder.start();
-//            InputStream inputStream = process.getInputStream();
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//
-//            // Read output from Python script
-//            StringBuilder output = new StringBuilder();
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                output.append(line);
-//            }
-//
-//            // Parse output into List<Recommendation> objects
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            List<Recommendation> recommendations = objectMapper.readValue(output.toString(), new TypeReference<List<Recommendation>>() {});
-//
-//            return recommendations;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-//
-//    @PutMapping("/update-preferences")
-//    public ResponseEntity updatePreferences(@RequestBody Order order){
-//        return new ResponseEntity("Updated User # " + order.getUser_id() + " preferences", HttpStatus.OK);
-//    }
+
+
 
 }
 
