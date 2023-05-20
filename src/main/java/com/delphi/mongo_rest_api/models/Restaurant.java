@@ -15,7 +15,8 @@ public class Restaurant {
     private String address;
     private List<Item> menu_items;
 
-    public Restaurant(String restaurant_name, String address, List<Item> menu_items) {
+    public Restaurant(int restaurantId, String restaurant_name, String address, List<Item> menu_items) {
+        this.restaurantId = restaurantId;
         this.restaurant_name = restaurant_name;
         this.address = address;
         this.menu_items = menu_items;

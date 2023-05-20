@@ -15,4 +15,7 @@ public class RestaurantService {
     public Restaurant getRestaurantById(Integer restaurantID) {
         return restaurantRepository.findRestaurantByRestaurantId(restaurantID);
     }
+    public Restaurant createRestaurant(Restaurant restaurant){
+        return restaurantRepository.insert(restaurant);
+    }
 }

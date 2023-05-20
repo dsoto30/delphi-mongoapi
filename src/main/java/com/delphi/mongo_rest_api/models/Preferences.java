@@ -6,61 +6,61 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Preferences {
-    private int calories, total_fat, saturated_fat, sodium, carbohydrates, sugars, protein;
+    private double calories, total_fat, saturated_fat, sodium, carbohydrates, sugars, protein;
 
-    public int getCalories() {
+    public double getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(double calories) {
         this.calories = calories;
     }
 
-    public int getTotal_fat() {
+    public double getTotal_fat() {
         return total_fat;
     }
 
-    public void setTotal_fat(int total_fat) {
+    public void setTotal_fat(double total_fat) {
         this.total_fat = total_fat;
     }
 
-    public int getSaturated_fat() {
+    public double getSaturated_fat() {
         return saturated_fat;
     }
 
-    public void setSaturated_fat(int saturated_fat) {
+    public void setSaturated_fat(double saturated_fat) {
         this.saturated_fat = saturated_fat;
     }
 
-    public int getSodium() {
+    public double getSodium() {
         return sodium;
     }
 
-    public void setSodium(int sodium) {
+    public void setSodium(double sodium) {
         this.sodium = sodium;
     }
 
-    public int getCarbohydrates() {
+    public double getCarbohydrates() {
         return carbohydrates;
     }
 
-    public void setCarbohydrates(int carbohydrates) {
+    public void setCarbohydrates(double carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
 
-    public int getSugars() {
+    public double getSugars() {
         return sugars;
     }
 
-    public void setSugars(int sugars) {
+    public void setSugars(double sugars) {
         this.sugars = sugars;
     }
 
-    public int getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(int protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 }
