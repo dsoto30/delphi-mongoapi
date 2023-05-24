@@ -1,6 +1,7 @@
 package com.delphi.mongo_rest_api.controllers;
 
 
+import com.delphi.mongo_rest_api.RecommendationParser;
 import com.delphi.mongo_rest_api.models.Order;
 import com.delphi.mongo_rest_api.models.Recommendation;
 import com.delphi.mongo_rest_api.models.User;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/delphi/orders")
@@ -46,11 +50,17 @@ public class OrderController {
     }
 
     @GetMapping("/recommend/{userId}/{restaurantId}")
-    public ResponseEntity<String> getRecommendations(
+    public ResponseEntity<Map<String, List<Recommendation>>> getRecommendations(
             @PathVariable String userId,
-            @PathVariable String restaurantId){
+            @PathVariable String restaurantId) {
 
-        return new ResponseEntity(callPythonScript(restaurantId, userId),HttpStatus.OK);
+        String pythonScriptResult = callPythonScript(restaurantId, userId);
+        List<Recommendation> recommendations = RecommendationParser.parseString(pythonScriptResult);
+
+        Map<String, List<Recommendation>> response = new HashMap<>();
+        response.put("Recommendations", recommendations);
+
+        return ResponseEntity.ok(response);
     }
 
     private static String callPythonScript(String param1, String param2) {
