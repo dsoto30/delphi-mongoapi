@@ -3,17 +3,26 @@ package com.delphi.mongo_rest_api.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Data
-@AllArgsConstructor
+@Document
 public class Order {
 
+    @Id
+    private String orderId;
     private int restaurantId;
-    private String userId, orderId;
+    private String userId;
     private ArrayList<Integer> ordered_items;
 
+    public Order(int restaurantId, String userId, ArrayList<Integer> ordered_items) {
+        this.restaurantId = restaurantId;
+        this.userId = userId;
+        this.ordered_items = ordered_items;
+    }
 
     public String getOrderId() {
         return orderId;
